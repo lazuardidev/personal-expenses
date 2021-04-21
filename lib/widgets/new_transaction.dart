@@ -6,16 +6,43 @@ import 'package:personal_expenses/widgets/adaptive_text_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
 
-  const NewTransaction({Key key, this.addTransaction}) : super(key: key);
+  NewTransaction(this.addTransaction) {
+    print('Constructor NewTransaction Widget');
+  }
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState() {
+    print('createState NewTransaction Widget');
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
+
+  _NewTransactionState(){
+    print('Constructor NewTransaction State');
+  }
+
+  @override
+  void initState() {
+    print('initState()');
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    print('didUpdateWidget()');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    print('dispose()');
+    super.dispose();
+  }
 
   void _submitData() {
     if (_amountController.text.isEmpty) {
@@ -60,11 +87,10 @@ class _NewTransactionState extends State<NewTransaction> {
         elevation: 5,
         child: Container(
           padding: EdgeInsets.only(
-            top: 10,
-            left: 10,
-            right: 10,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 10
-          ),
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -90,7 +116,8 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                    AdaptiveTextButton(text: 'Choosen Date', handler: _presentDatePicker),
+                    AdaptiveTextButton(
+                        text: 'Choosen Date', handler: _presentDatePicker),
                   ],
                 ),
               ),

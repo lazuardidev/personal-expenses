@@ -9,6 +9,7 @@ class Chatbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build() ChatBar');
     return LayoutBuilder(builder: (context, constraints) {
       return Column(
         children: [
